@@ -10,7 +10,7 @@ const port = process.env.PORT || 1337;
 app.use(cors()); // Enable CORS for all routes
 
 // RESTful API routes here
-app.get('/api/rollDice', (req, res) => {
+app.get('/', (req, res) => {
     // Generate a random number between 1 and 6
     const randomValue = Math.floor(Math.random() * 6) + 1;
     
