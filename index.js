@@ -27,6 +27,24 @@ const server = http.createServer((request, response) => {
     response.end('<h3>The End.</h3>');
 });
 
+// Generate a random number between min and max
+function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Route to generate a random number between 1 and 6 (for a dice roll)
+server.get('/api/dice-roll', (req, res) => {
+    const randomValue = getRandomNumber(1, 6);
+    res.json({ result: randomValue });
+});
+
+// You can define more routes for other random number generation needs
+// For example, to generate a random number between 1 and 100:
+server.get('/api/random-number', (req, res) => {
+    const randomValue = getRandomNumber(1, 100);
+    res.json({ result: randomValue });
+});
+
 const port = process.env.PORT || 1337;
 server.listen(port);
 
